@@ -8,5 +8,5 @@
 
 int main(void)
 {
-	/* MAIN  Prueba Mikel*/
+	/* MAIN  Prueba Alejo*/
 }
