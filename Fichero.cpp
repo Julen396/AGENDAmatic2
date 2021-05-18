@@ -107,7 +107,7 @@ void leerFichero(sqlite3 *db)
 
 			}
 		}
-		insertNewCountry(db, t); // @suppress("Invalid arguments")
+		insertarTareas(db, t); // @suppress("Invalid arguments")
 
 	}
 	fichero.close();

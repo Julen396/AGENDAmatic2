@@ -14,7 +14,7 @@ using namespace std;
 
 #include "Tarea.h";
 
-int insertNewCountry(sqlite3 *db, Tarea *tarea) {
+int insertarTareas(sqlite3 *db, Tarea *tarea) {
 	sqlite3_stmt *stmt;
 
 	//char *surnamee="Hola";
@@ -80,6 +80,38 @@ int insertNewCountry(sqlite3 *db, Tarea *tarea) {
 	}
 
 	printf("Prepared statement finalized (INSERT)\n");
+
+	return SQLITE_OK;
+}
+int borrarTareas(sqlite3 *db) {
+	sqlite3_stmt *stmt;
+
+	char sql[] = "delete from tareas";
+
+	int result = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ; // @suppress("Invalid arguments")
+	if (result != SQLITE_OK) {
+		printf("Error preparing statement (DELETE)\n");
+		printf("%s\n", sqlite3_errmsg(db)); // @suppress("Invalid arguments")
+		return result;
+	}
+
+	printf("SQL query prepared (DELETE)\n");
+
+	result = sqlite3_step(stmt); // @suppress("Invalid arguments")
+	if (result != SQLITE_DONE) {
+		printf("Error deleting data\n");
+		printf("%s\n", sqlite3_errmsg(db)); // @suppress("Invalid arguments")
+		return result;
+	}
+
+	result = sqlite3_finalize(stmt); // @suppress("Invalid arguments")
+	if (result != SQLITE_OK) {
+		printf("Error finalizing statement (DELETE)\n");
+		printf("%s\n", sqlite3_errmsg(db)); // @suppress("Invalid arguments")
+		return result;
+	}
+
+	printf("Prepared statement finalized (DELETE)\n");
 
 	return SQLITE_OK;
 }

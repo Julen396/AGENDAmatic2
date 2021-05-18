@@ -39,6 +39,7 @@ int WINAPI WinMain(HINSTANCE currentInstance, HINSTANCE previousInstance, PSTR c
 	}
 
 	printf("Database opened\n") ;
+	borrarTareas(db); // @suppress("Invalid arguments")
 	leerFichero(db); // @suppress("Invalid arguments")
 	//insertNewCountry(db, "España"); // @suppress("Invalid arguments")
 	/////////

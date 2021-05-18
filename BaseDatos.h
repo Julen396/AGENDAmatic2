@@ -13,7 +13,8 @@
 #define BASEDATOS_H_
 
 
-int insertNewCountry(sqlite3 *db, Tarea *tarea);
+int insertarTareas(sqlite3 *db, Tarea *tarea);
+int borrarTareas(sqlite3 *db);
 
 
 #endif /* BASEDATOS_H_ */
