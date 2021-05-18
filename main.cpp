@@ -32,7 +32,7 @@ int WINAPI WinMain(HINSTANCE currentInstance, HINSTANCE previousInstance, PSTR c
 	/////////
 	sqlite3 *db;
 
-	int result = sqlite3_open("test.sqlite", &db); // @suppress("Invalid arguments")
+	int result = sqlite3_open("Bd.sqlite", &db); // @suppress("Invalid arguments")
 	if (result != SQLITE_OK) {
 		printf("Error opening database\n");
 		return result;
