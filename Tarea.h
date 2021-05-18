@@ -10,7 +10,7 @@
 
 class Tarea
 {
-private:
+public:
 
 	char *fecha;
 	int duracion;

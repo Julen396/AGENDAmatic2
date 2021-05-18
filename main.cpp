@@ -1,5 +1,7 @@
 #include <windows.h>
 #include "Fichero.h"
+#include "BaseDatos.h"
+
 
 LRESULT CALLBACK WindowProcessMessages(HWND hwnd, UINT msg, WPARAM param, LPARAM lparam);
 
@@ -27,7 +29,19 @@ int WINAPI WinMain(HINSTANCE currentInstance, HINSTANCE previousInstance, PSTR c
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
 	}
-	leerFichero();
+	/////////
+	sqlite3 *db;
+
+	int result = sqlite3_open("test.sqlite", &db); // @suppress("Invalid arguments")
+	if (result != SQLITE_OK) {
+		printf("Error opening database\n");
+		return result;
+	}
+
+	printf("Database opened\n") ;
+	leerFichero(db); // @suppress("Invalid arguments")
+	//insertNewCountry(db, "España"); // @suppress("Invalid arguments")
+	/////////
 	return 0;
 }
 

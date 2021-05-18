@@ -11,11 +11,17 @@
 #include <cstdlib>
 using namespace std;
 
-void leerFichero()
-{
-	string nombre;
-	string linea;
+#include "BaseDatos.h"
+#include "Tarea.h"
+#include <String.h>
 
+void leerFichero(sqlite3 *db)
+{
+	string linea;
+	//Tarea tarea("", 0, 0, "", "");
+	//char temp[]="";
+	char temp[linea.size() + 1];
+	Tarea *t = new Tarea("", 0, 0, "", "");
 	ifstream fichero("Tareas.txt");
 	if( fichero.fail() )
 	{
@@ -33,14 +39,42 @@ void leerFichero()
 				{
 					getline(fichero,linea);
 					cout << linea << endl;//Prueba
+
+					strcpy(temp, linea.c_str()); // @suppress("Invalid arguments")
+					t->setDescripcion(temp);
+
 				}else
 				{
 					fichero >> linea;
 					cout << linea << endl;//Prueba
+					//char as[]=linea;
+					//wfdc=linea;
+
+					strcpy(temp, linea.c_str());
+					if(i==0)
+					{
+						t->setFecha(temp);
+					}
+					if(i==1)
+					{
+						t->setDuracion((int)temp);
+						//cout << "edewcwef" << endl;
+					}
+					if(i==2)
+					{
+						t->setImportancia((int)temp);
+					}
+					if(i==3)
+					{
+						t->setTitulo(temp);
+					}
+
 				}
 
 			}
 		}
+		insertNewCountry(db, t); // @suppress("Invalid arguments")
+
 	}
 	fichero.close();
 }
