@@ -42,6 +42,8 @@ int WINAPI WinMain(HINSTANCE currentInstance, HINSTANCE previousInstance, PSTR c
 	borrarTareas(db); // @suppress("Invalid arguments")
 	leerFichero(db); // @suppress("Invalid arguments")
 	//insertNewCountry(db, "España"); // @suppress("Invalid arguments")
+	ordenarTareasImp(db); // @suppress("Invalid arguments")
+	ordenarTareasDur(db); // @suppress("Invalid arguments")
 	/////////
 	return 0;
 }
