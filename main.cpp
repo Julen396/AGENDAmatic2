@@ -1,4 +1,5 @@
 #include <windows.h>
+#include "Fichero.h"
 
 LRESULT CALLBACK WindowProcessMessages(HWND hwnd, UINT msg, WPARAM param, LPARAM lparam);
 
@@ -26,7 +27,7 @@ int WINAPI WinMain(HINSTANCE currentInstance, HINSTANCE previousInstance, PSTR c
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
 	}
-
+	leerFichero();
 	return 0;
 }
 
