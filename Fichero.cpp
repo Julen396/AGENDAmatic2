@@ -17,10 +17,22 @@ using namespace std;
 
 void leerFichero(sqlite3 *db)
 {
-	string linea;
-	//Tarea tarea("", 0, 0, "", "");
-	//char temp[]="";
-	char temp[linea.size() + 1];
+	string linea1;
+	char temp1[linea1.size() + 1];
+
+	string linea2;
+	char temp2[linea2.size() + 1];
+
+	string linea3;
+	char temp3[linea3.size() + 1];
+
+	string linea4;
+	char temp4[linea4.size() + 1];
+
+	string linea5;
+	char temp5[linea5.size() + 1];
+
+
 	Tarea *t = new Tarea("", 0, 0, "", "");
 	ifstream fichero("Tareas.txt");
 	if( fichero.fail() )
@@ -31,42 +43,64 @@ void leerFichero(sqlite3 *db)
 
 	while (!fichero.eof())
 	{
-		for (int i = 0; i < 5; i++)
+		int i=0;
+		for (i = 0; i < 5; i++)
 		{
 			if (!fichero.eof())
 			{
 				if(i==4)
 				{
-					getline(fichero,linea);
-					cout << linea << endl;//Prueba
+					getline(fichero,linea1);
+					cout << linea1 << endl;//Prueba
 
-					strcpy(temp, linea.c_str()); // @suppress("Invalid arguments")
-					t->setDescripcion(temp);
+					strcpy(temp1, linea1.c_str()); // @suppress("Invalid arguments")
+					t->setDescripcion(temp1);
 
 				}else
 				{
-					fichero >> linea;
-					cout << linea << endl;//Prueba
-					//char as[]=linea;
-					//wfdc=linea;
 
-					strcpy(temp, linea.c_str());
 					if(i==0)
 					{
-						t->setFecha(temp);
+						fichero >> linea2;
+						cout << linea2 << endl;//Prueba
+						//char as[]=linea;
+						//wfdc=linea;
+
+						strcpy(temp2, linea2.c_str());
+						t->setFecha(temp2);
 					}
 					if(i==1)
 					{
-						t->setDuracion((int)temp);
+						fichero >> linea4;
+						cout << linea4 << endl;//Prueba
+						//char as[]=linea;
+						//wfdc=linea;
+
+						strcpy(temp4, linea4.c_str());
+
+						t->setDuracion(atoi(temp4));
 						//cout << "edewcwef" << endl;
 					}
 					if(i==2)
 					{
-						t->setImportancia((int)temp);
+						fichero >> linea5;
+						cout << linea5 << endl;//Prueba
+						//char as[]=linea;
+						//wfdc=linea;
+
+						strcpy(temp5, linea5.c_str());
+
+						t->setImportancia(atoi(temp5));
 					}
 					if(i==3)
 					{
-						t->setTitulo(temp);
+						fichero >> linea3;
+						cout << linea3 << endl;//Prueba
+						//char as[]=linea;
+						//wfdc=linea;
+
+						strcpy(temp3, linea3.c_str());
+						t->setTitulo(temp3);
 					}
 
 				}
