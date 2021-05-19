@@ -115,7 +115,7 @@ int borrarTareas(sqlite3 *db) {
 int ordenarTareasImp(sqlite3 *db) {
 	sqlite3_stmt *stmt;
 
-	char sql[] = "select id, fecha, importancia, duracion, titulo, Descripcion from tareas order by importancia asc";
+	char sql[] = "select id, fecha, importancia, duracion, titulo, Descripcion from tareas where Descripcion NOT LIKE '%Completada%' order by importancia asc";
 
 	int result = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ; // @suppress("Invalid arguments")
 	if (result != SQLITE_OK) {
@@ -167,7 +167,7 @@ int ordenarTareasImp(sqlite3 *db) {
 int ordenarTareasDur(sqlite3 *db) {
 	sqlite3_stmt *stmt;
 
-	char sql[] = "select id, fecha, importancia, duracion, titulo, Descripcion from tareas order by duracion asc";
+	char sql[] = "select id, fecha, importancia, duracion, titulo, Descripcion from tareas where Descripcion NOT LIKE '%Completada%' order by duracion asc";
 
 	int result = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ; // @suppress("Invalid arguments")
 	if (result != SQLITE_OK) {
