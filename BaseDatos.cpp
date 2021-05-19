@@ -17,69 +17,65 @@ using namespace std;
 int insertarTareas(sqlite3 *db, Tarea *tarea) {
 	sqlite3_stmt *stmt;
 
-	//char *surnamee="Hola";
-
-
-
 	char sql[] = "insert into tareas (id, fecha, importancia, duracion, titulo, Descripcion) values (NULL, ?, ?, ?, ?, ?)";
 	int result = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL) ; // @suppress("Invalid arguments")
 	if (result != SQLITE_OK) {
-		printf("Error preparing statement (INSERT)\n");
+		printf("Error preparando la sentencia (INSERT)\n");
 		printf("%s\n", sqlite3_errmsg(db)); // @suppress("Invalid arguments")
 		return result;
 	}
 
-	printf("SQL query prepared (INSERT)\n");
+	printf("consulta SQL preparada (INSERT)\n");
 
 	result = sqlite3_bind_text(stmt, 1, tarea->getFecha(), strlen(tarea->getFecha()), SQLITE_STATIC); // @suppress("Invalid arguments")
 	if (result != SQLITE_OK) {
-		printf("Error binding parameters\n");
+		printf("Error introduciendo los parametros\n");
 		printf("%s\n", sqlite3_errmsg(db)); // @suppress("Invalid arguments")
 		return result;
 	}
 
 	result = sqlite3_bind_int(stmt, 2, tarea->getImportancia()); // // @suppress("Invalid arguments")
 	if (result != SQLITE_OK) {
-		printf("Error binding parameters\n");
+		printf("Error introduciendo los parametros\n");
 		printf("%s\n", sqlite3_errmsg(db)); // @suppress("Invalid arguments")
 		return result;
 	}
 
 	result = sqlite3_bind_int(stmt, 3, tarea->getDuracion()); // // @suppress("Invalid arguments")
 	if (result != SQLITE_OK) {
-		printf("Error binding parameters\n");
+		printf("Error introduciendo los parametros\n");
 		printf("%s\n", sqlite3_errmsg(db)); // @suppress("Invalid arguments")
 		return result;
 	}
 
 	result = sqlite3_bind_text(stmt, 4, tarea->getTitulo(), strlen(tarea->getTitulo()), SQLITE_STATIC); // @suppress("Invalid arguments")
 	if (result != SQLITE_OK) {
-		printf("Error binding parameters\n");
+		printf("Error introduciendo los parametros\n");
 		printf("%s\n", sqlite3_errmsg(db)); // @suppress("Invalid arguments")
 		return result;
 	}
 
 	result = sqlite3_bind_text(stmt, 5, tarea->getDescripcion(), strlen(tarea->getDescripcion()), SQLITE_STATIC); // @suppress("Invalid arguments")
 	if (result != SQLITE_OK) {
-		printf("Error binding parameters\n");
+		printf("Error introduciendo los parametros\n");
 		printf("%s\n", sqlite3_errmsg(db)); // @suppress("Invalid arguments")
 		return result;
 	}
 
 	result = sqlite3_step(stmt); // @suppress("Invalid arguments")
 	if (result != SQLITE_DONE) {
-		printf("Error inserting new data into country table\n");
+		printf("Error insertando table\n");
 		return result;
 	}
 
 	result = sqlite3_finalize(stmt); // @suppress("Invalid arguments")
 	if (result != SQLITE_OK) {
-		printf("Error finalizing statement (INSERT)\n");
+		printf("Error finalizando consulta (INSERT)\n");
 		printf("%s\n", sqlite3_errmsg(db)); // @suppress("Invalid arguments")
 		return result;
 	}
 
-	printf("Prepared statement finalized (INSERT)\n");
+	printf("Consulta finalizada (INSERT)\n");
 
 	return SQLITE_OK;
 }
@@ -90,12 +86,12 @@ int borrarTareas(sqlite3 *db) {
 
 	int result = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ; // @suppress("Invalid arguments")
 	if (result != SQLITE_OK) {
-		printf("Error preparing statement (DELETE)\n");
+		printf("Error preparando la sentencia (DELETE)\n");
 		printf("%s\n", sqlite3_errmsg(db)); // @suppress("Invalid arguments")
 		return result;
 	}
 
-	printf("SQL query prepared (DELETE)\n");
+	printf("consulta SQL preparada (DELETE)\n");
 
 	result = sqlite3_step(stmt); // @suppress("Invalid arguments")
 	if (result != SQLITE_DONE) {
@@ -106,12 +102,12 @@ int borrarTareas(sqlite3 *db) {
 
 	result = sqlite3_finalize(stmt); // @suppress("Invalid arguments")
 	if (result != SQLITE_OK) {
-		printf("Error finalizing statement (DELETE)\n");
+		printf("Error finalizando consulta (DELETE)\n");
 		printf("%s\n", sqlite3_errmsg(db)); // @suppress("Invalid arguments")
 		return result;
 	}
 
-	printf("Prepared statement finalized (DELETE)\n");
+	printf("Consulta finalizada (DELETE)\n");
 
 	return SQLITE_OK;
 }
@@ -123,12 +119,12 @@ int ordenarTareasImp(sqlite3 *db) {
 
 	int result = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ; // @suppress("Invalid arguments")
 	if (result != SQLITE_OK) {
-		printf("Error preparing statement (SELECT)\n");
+		printf("Error preparando la sentencia (SELECT)\n");
 		printf("%s\n", sqlite3_errmsg(db)); // @suppress("Invalid arguments")
 		return result;
 	}
 
-	printf("SQL query prepared (SELECT)\n");
+	printf("consulta SQL preparada (SELECT)\n");
 
 	int id;
 	char fecha[10];
@@ -158,12 +154,12 @@ int ordenarTareasImp(sqlite3 *db) {
 
 	result = sqlite3_finalize(stmt); // @suppress("Invalid arguments")
 	if (result != SQLITE_OK) {
-		printf("Error finalizing statement (SELECT)\n");
+		printf("Error finalizando consulta (SELECT)\n");
 		printf("%s\n", sqlite3_errmsg(db)); // @suppress("Invalid arguments")
 		return result;
 	}
 
-	printf("Prepared statement finalized (SELECT)\n");
+	printf("Consulta finalizada (SELECT)\n");
 
 	return SQLITE_OK;
 }
@@ -175,12 +171,12 @@ int ordenarTareasDur(sqlite3 *db) {
 
 	int result = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ; // @suppress("Invalid arguments")
 	if (result != SQLITE_OK) {
-		printf("Error preparing statement (SELECT)\n");
+		printf("Error preparando la sentencia (SELECT)\n");
 		printf("%s\n", sqlite3_errmsg(db)); // @suppress("Invalid arguments")
 		return result;
 	}
 
-	printf("SQL query prepared (SELECT)\n");
+	printf("consulta SQL preparada (SELECT)\n");
 
 	int id;
 	char fecha[10];
@@ -210,12 +206,12 @@ int ordenarTareasDur(sqlite3 *db) {
 
 	result = sqlite3_finalize(stmt); // @suppress("Invalid arguments")
 	if (result != SQLITE_OK) {
-		printf("Error finalizing statement (SELECT)\n");
+		printf("Error finalizando consulta (SELECT)\n");
 		printf("%s\n", sqlite3_errmsg(db)); // @suppress("Invalid arguments")
 		return result;
 	}
 
-	printf("Prepared statement finalized (SELECT)\n");
+	printf("Consulta finalizada (SELECT)\n");
 
 	return SQLITE_OK;
 }

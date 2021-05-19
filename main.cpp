@@ -34,14 +34,13 @@ int WINAPI WinMain(HINSTANCE currentInstance, HINSTANCE previousInstance, PSTR c
 
 	int result = sqlite3_open("Bd.sqlite", &db); // @suppress("Invalid arguments")
 	if (result != SQLITE_OK) {
-		printf("Error opening database\n");
+		//printf("Error abriendo la base de datos\n");
 		return result;
 	}
 
 	printf("Database opened\n") ;
 	borrarTareas(db); // @suppress("Invalid arguments")
 	leerFichero(db); // @suppress("Invalid arguments")
-	//insertNewCountry(db, "España"); // @suppress("Invalid arguments")
 	ordenarTareasImp(db); // @suppress("Invalid arguments")
 	ordenarTareasDur(db); // @suppress("Invalid arguments")
 	/////////

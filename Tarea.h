@@ -43,7 +43,6 @@ public:
 
 	void setTitulo(char *titulo);
 
-
 };
 
 

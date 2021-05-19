@@ -18,19 +18,19 @@ using namespace std;
 void leerFichero(sqlite3 *db)
 {
 	string linea1;
-	char temp1[linea1.size() + 1];
+	char valor1[linea1.size() + 1];
 
 	string linea2;
-	char temp2[linea2.size() + 1];
+	char valor2[linea2.size() + 1];
 
 	string linea3;
-	char temp3[linea3.size() + 1];
+	char valor3[linea3.size() + 1];
 
 	string linea4;
-	char temp4[linea4.size() + 1];
+	char valor4[linea4.size() + 1];
 
 	string linea5;
-	char temp5[linea5.size() + 1];
+	char valor5[linea5.size() + 1];
 
 
 	Tarea *t = new Tarea("", 0, 0, "", "");
@@ -53,8 +53,8 @@ void leerFichero(sqlite3 *db)
 					getline(fichero,linea1);
 					cout << linea1 << endl;//Prueba
 
-					strcpy(temp1, linea1.c_str()); // @suppress("Invalid arguments")
-					t->setDescripcion(temp1);
+					strcpy(valor1, linea1.c_str()); // @suppress("Invalid arguments")
+					t->setDescripcion(valor1);
 
 				}else
 				{
@@ -63,44 +63,35 @@ void leerFichero(sqlite3 *db)
 					{
 						fichero >> linea2;
 						cout << linea2 << endl;//Prueba
-						//char as[]=linea;
-						//wfdc=linea;
 
-						strcpy(temp2, linea2.c_str());
-						t->setFecha(temp2);
+						strcpy(valor2, linea2.c_str());
+						t->setFecha(valor2);
 					}
 					if(i==1)
 					{
 						fichero >> linea4;
 						cout << linea4 << endl;//Prueba
-						//char as[]=linea;
-						//wfdc=linea;
 
-						strcpy(temp4, linea4.c_str());
 
-						t->setDuracion(atoi(temp4));
-						//cout << "edewcwef" << endl;
+						strcpy(valor4, linea4.c_str());
+						t->setDuracion(atoi(valor4));
 					}
 					if(i==2)
 					{
 						fichero >> linea5;
 						cout << linea5 << endl;//Prueba
-						//char as[]=linea;
-						//wfdc=linea;
 
-						strcpy(temp5, linea5.c_str());
 
-						t->setImportancia(atoi(temp5));
+						strcpy(valor5, linea5.c_str());
+						t->setImportancia(atoi(valor5));
 					}
 					if(i==3)
 					{
 						fichero >> linea3;
 						cout << linea3 << endl;//Prueba
-						//char as[]=linea;
-						//wfdc=linea;
 
-						strcpy(temp3, linea3.c_str());
-						t->setTitulo(temp3);
+						strcpy(valor3, linea3.c_str());
+						t->setTitulo(valor3);
 					}
 
 				}
