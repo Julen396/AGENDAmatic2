@@ -17,8 +17,8 @@ int GetInput()
 
 void MostrarMenuPrincipal()
 {
-	cout << "¡Bienvenid@ a AgendaMatic! (V 2.0)\n";
-    cout << "Por favor, haz tu selección:\n";
+	cout << "Bienvenid@ a AgendaMatic! (V 2.0)\n";
+    cout << "Por favor, haz tu seleccion:\n";
     cout << "1 - Leer fichero\n";
     cout << "2 - Y\n";
     cout << "3 - Salir\n";
@@ -60,10 +60,12 @@ int main(int argc, char *argv[])
 
                        break;
                case 2:
-            	   	   cout << "Has elegido la opción: 2\n";
+            	   	   cout << "Has elegido la opcion: 2\n";
+            	   	   cout << "Introduce un numero para continuar: ";
+            	   	   choice = GetInput();
                        break;
                case 3:
-                       cout << "Gracias por usar AgendaMatic, ¡nos vemos!";
+                       cout << "Gracias por usar AgendaMatic, nos vemos!\n";
                        break;
 
                default:
