@@ -19,10 +19,21 @@ void MostrarMenuPrincipal()
 {
 	cout << "¡Bienvenid@ a AgendaMatic! (V 2.0)\n";
     cout << "Por favor, haz tu selección:\n";
-    cout << "1 - X\n";
+    cout << "1 - Leer fichero\n";
     cout << "2 - Y\n";
     cout << "3 - Salir\n";
     cout << "Opcion: ";
+}
+
+int AbrirBD(sqlite3 *db)
+{
+	int result = sqlite3_open("Bd.sqlite", &db);
+	if (result != SQLITE_OK)
+	{
+	//printf("Error abriendo la base de datos\n");
+	return result;
+	}
+	return 0;
 }
 
 int main(int argc, char *argv[])
@@ -36,10 +47,20 @@ int main(int argc, char *argv[])
        choice = GetInput();
        switch(choice) {
                case 1:
-                       cout << "Has elegido la opción 1\n";
+                       cout << "Has elegido la opción: Leer fichero\n";
+                       sqlite3 *db;
+
+                       if (AbrirBD(db) != 0)
+                       {
+                    	   printf("Error al abrir la Base de Datos\n");
+                       }
+                       printf("Base de datos abierta\n");
+
+                       leerFichero(db);
+
                        break;
                case 2:
-            	   	   cout << "Has elegido la opción 2\n";
+            	   	   cout << "Has elegido la opción: 2\n";
                        break;
                case 3:
                        cout << "Gracias por usar AgendaMatic, ¡nos vemos!";
